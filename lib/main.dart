@@ -19,14 +19,11 @@ class MyPortfolio extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('TM Sachith'),
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // Add your onPressed code here!
-            },
+          title: const Text(
+            'TM Sachith',
+            style: TextStyle(color: Colors.white),
           ),
+          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -178,8 +175,16 @@ class MyPortfolio extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton.icon(
-                  onPressed: () {
-                    // Add your onPressed code here!
+                  onPressed: () async {
+                    const url =
+                        'https://tmsachith.github.io/assets/Sachith%20Thennakoon.pdf';
+                    // ignore: deprecated_member_use
+                    if (await canLaunch(url)) {
+                      // ignore: deprecated_member_use
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
@@ -187,10 +192,10 @@ class MyPortfolio extends StatelessWidget {
                       borderRadius: BorderRadius.circular(18.0),
                     ),
                   ),
-                  icon: const Icon(Icons.description),
+                  icon: const Icon(Icons.description, color: Colors.white),
                   label: const Padding(
                     padding: EdgeInsets.only(left: 10, right: 10),
-                    child: Text('My CV'),
+                    child: Text('My CV', style: TextStyle(color: Colors.white)),
                   ),
                 ),
                 Container(
